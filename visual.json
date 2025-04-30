@@ -1,0 +1,531 @@
+{
+  "svg": "visual.svg",
+  "items": [
+    {
+      "id": "aliceInitiator",
+      "display": "IF initiator = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "aliceInitiatorTxt",
+      "display": "IF initiator = noneAgent  THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "pickInitiatorTxt",
+      "display": "IF initiator = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "bobInitiator",
+      "display": "IF initiator = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "bobInitiatorTxt",
+      "display": "IF initiator = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "pickResponderTxt",
+      "display": "IF responder = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "aliceResponder",
+      "display": "IF responder = noneAgent & initiator /= alice THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "aliceResponderTxt",
+      "display": "IF responder = noneAgent & initiator /= alice THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "spyResponder",
+      "display": "IF responder = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "spyResponderTxt",
+      "display": "IF responder = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "bobResponder",
+      "display": "IF responder = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "bobResponderTxt",
+      "display": "IF responder = noneAgent THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "aliceNonceMsg1Snd",
+      "display": "IF initiator = alice & counter(alice) > 0 & (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceIDMsg1Snd",
+      "display": "IF initiator = alice & counter(alice) > 0 & (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg1",
+      "display": "IF initiator = alice & counter(alice) > 0 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg1",
+      "display": "IF initiator = alice & counter(alice) > 0 & (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1Line",
+      "display": "IF initiator = alice & counter(alice) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1Arrow",
+      "display": "IF initiator = alice & counter(alice) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg1Rcv",
+      "display": "IF initiator = alice & counter(bob) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg1Rcv",
+      "display": "IF initiator = alice & counter(bob) > 0 & (idA,na, pkB ) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1LineRcv",
+      "display": "IF initiator = alice & counter(bob) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1ArrowRcv",
+      "display": "IF initiator = alice & counter(bob) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceIDBobRcv",
+      "display": "IF initiator = alice & counter(bob) > 0 & (idA,na, pkB ) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceBobRcv",
+      "display": "IF initiator = alice & counter(bob) > 0 & (idA,na, pkB ) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg2Snd",
+      "display": "IF initiator = alice & counter(responder) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2LineSnd",
+      "display": "IF initiator = alice & counter(responder) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2ArrowSnd",
+      "display": "IF initiator = alice & counter(responder) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg2Snd",
+      "display": "IF initiator = alice & counter(responder) > 1 & (na, nb , pkA) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceBobSnd",
+      "display": "IF initiator = alice & counter(responder) > 1 & (na, nb , pkA) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceBobSnd",
+      "display": "IF initiator = alice & counter(responder) > 1 & (na, nb , pkA) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg2Rcv",
+      "display": "IF initiator = alice & counter(alice) > 1 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2LineRcv",
+      "display": "IF initiator = alice & counter(alice) > 1 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2ArrowRcv",
+      "display": "IF initiator = alice & counter(alice) > 1 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg2Rcv",
+      "display": "IF initiator = alice & counter(alice) > 1 & (na, nb , pkA) : KNOWN_MESSAGE2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceAliceRcv",
+      "display": "IF initiator = alice & counter(alice) > 1 & (na, nb , pkA) : KNOWN_MESSAGE2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceAliceRcv",
+      "display": "IF initiator = alice & counter(alice) > 1 & (na, nb , pkA) : KNOWN_MESSAGE2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg3Snd",
+      "display": "IF initiator = alice & counter(alice) > 2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3LineSnd",
+      "display": "IF initiator = alice & counter(alice) > 2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3ArrowSnd",
+      "display": "IF initiator = alice & counter(alice) > 2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg3Snd",
+      "display": "IF initiator = alice & counter(alice) > 2 & (nb, pkB) : KNOWN_MESSAGE3 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceAliceSnd",
+      "display": "IF initiator = alice & counter(alice) > 2 & (nb, pkB) : KNOWN_MESSAGE3 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg3Rcv",
+      "display": "IF initiator = alice & counter(responder) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3ArrowRcv",
+      "display": "IF initiator = alice & counter(responder) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3LineRcv",
+      "display": "IF initiator = alice & counter(responder) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg3Rcv",
+      "display": "IF initiator = alice & counter(responder) > 2 & (nb, pkB) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceBobRcv",
+      "display": "IF initiator = alice & counter(responder) > 2 & (nb, pkB) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceMsg1_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 0 & (idB, nb, pkA) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobIDMsg1_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 0 & (idB, nb, pkA) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg1_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg1_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 0 & (idB, nb, pkA) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1Line_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1Arrow_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg1Rcv_BtoA",
+      "display": "IF initiator = bob & counter(alice) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg1Rcv_BtoA",
+      "display": "IF initiator = bob & counter(alice) > 0 & (idB, nb, pkA) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1LineRcv_BtoA",
+      "display": "IF initiator = bob & counter(alice) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg1ArrowRcv_BtoA",
+      "display": "IF initiator = bob & counter(alice) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobIDAliceRcv_BtoA",
+      "display": "IF initiator = bob & counter(alice) > 0 & (idB, nb, pkA) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceAliceRcv_BtoA",
+      "display": "IF initiator = bob & counter(alice) > 0 & (idB, nb, pkA) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg2_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2Line_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2Arrow_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg2_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 1 & (nb, na, pkB) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceAliceSnd_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 1 & (nb, na, pkB) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceAliceSnd_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 1 & (nb, na, pkB) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg2Rcv_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2LineRcv_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg2ArrowRcv_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg2Rcv_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 1 & (nb, na, pkB) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceBobRcv_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 1 & (nb, na, pkB) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceBobRcv_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 1 & (nb, na, pkB) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg3_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3Line_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3Arrow_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg3_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 2 & (na, pkA) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceBobSnd_BtoA",
+      "display": "IF initiator = bob & counter(bob) > 2 & (na, pkA) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg3Rcv_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3ArrowRcv_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "msg3LineRcv_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg3Rcv_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 2 & (na, pkA) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceAliceRcv_BtoA",
+      "display": "IF initiator = bob & counter(responder) > 2 & (na, pkA) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg1DED",
+      "display": "IF  (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg1DED",
+      "display": "IF  (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceMsg1DED",
+      "display": "IF  (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceIDMsg1DED",
+      "display": "IF  (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg2DED",
+      "display": "IF  (na, nb, pkA) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg2DED",
+      "display": "IF  (na, nb, pkA) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNoncemsg2DED",
+      "display": "IF  (na, nb, pkA) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNoncemsg2DED",
+      "display": "IF  (na, nb, pkA) : KNOWN_MESSAGE2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg3DED",
+      "display": "IF  (nb, pkB) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg3DED",
+      "display": "IF  (nb, pkB) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNoncemsg3DED",
+      "display": "IF  (nb, pkB) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "spyPKmsg1",
+      "display": "IF  (idA, na, pkS) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceMsg1ToSpy",
+      "display": "IF  (idA, na, pkS) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceIDMsg1ToSpy",
+      "display": "IF  (idA, na, pkS) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceSpyToBobMsg1",
+      "display": "IF  (idA, na, pkB) : KNOWN_MESSAGE1 & counter(bob) > 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "spyPKmsg3Snd",
+      "display": "IF  (nb, pkS) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceAliceToSpy",
+      "display": "IF  (nb, pkS) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceDED",
+      "display": "IF (na) : KNOWN_NONCES THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceDED",
+      "display": "IF (nb) : KNOWN_NONCES THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "sndMsg1Btn",
+      "display": "IF initiator /= noneAgent & responder /= noneAgent & counter(initiator) = 0 THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "sndMsg1BtnTxt",
+      "display": "IF initiator /= noneAgent & responder /= noneAgent & counter(initiator) = 0 THEN \"block \" ELSE \"none\" END "
+    },
+    {
+      "id": "rcvMsg1Btn",
+      "display": "IF responder /= noneAgent & counter(initiator) = 1 & counter(responder) = 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "rcvMsg1BtnTxt",
+      "display": "IF responder /= noneAgent & counter(initiator) = 1 & counter(responder) = 0 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "sndMsg2Btn",
+      "display": "IF counter(responder) = 1 & counter(initiator) = 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "sndMsg2BtnTxt",
+      "display": "IF counter(responder) = 1 & counter(initiator) = 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "rcvMsg2Btn",
+      "display": "IF counter(responder) = 2  & counter(initiator) = 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "rcvMsg2BtnTxt",
+      "display": "IF counter(responder) = 2 & counter(initiator) = 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "sndMsg3BtnAtoB",
+      "display": "IF counter(responder) = 2 & counter(initiator) = 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "sndMsg3BtnAtoS",
+      "display": "IF counter(responder) = 2 & counter(initiator) = 2 & counter(bob) = 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "sndMsg3BtnTxt",
+      "display": "IF counter(responder) = 2 & counter(initiator) = 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "rcvMsg3Btn",
+      "display": "IF counter(initiator) = 3 & counter(responder) = 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "rcvMsg3BtnTxt",
+      "display": "IF counter(initiator) = 3 & counter(responder) = 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "fakeIt1",
+      "display": "IF counter(initiator) = 1 & counter(responder) = 1 & counter(bob) = 0 & (na) : KNOWN_NONCES & (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "fakeIt1Txt",
+      "display": "IF counter(initiator) = 1 & counter(responder) = 1 & counter(bob) = 0 & (na) : KNOWN_NONCES & (idA, na, pkB) : KNOWN_MESSAGE1 THEN \"block\" ELSE \"none\" END"
+    }
+  ],
+  "events": [
+    {
+      "id": "aliceInitiator",
+      "event": "Select_initiator",
+      "predicates": ["initiator_local=alice"]
+    },
+    {
+      "id": "bobInitiator",
+      "event": "Select_initiator",
+      "predicates": ["initiator_local=bob"]
+    },
+    {
+      "id": "aliceResponder",
+      "event": "Select_responder",
+      "predicates": ["responder_local=alice"]
+    },
+    {
+      "id": "spyResponder",
+      "event": "Select_responder",
+      "predicates": ["responder_local=spy"]
+    },
+    {
+      "id": "bobResponder",
+      "event": "Select_responder",
+      "predicates": ["responder_local=bob"]
+    },
+    {
+      "id": "sndMsg1Btn",
+      "event": "Send_Message1"
+    },
+    {
+      "id": "rcvMsg1Btn",
+      "event": "Recv_Message1"
+    },
+    {
+      "id": "sndMsg2Btn",
+      "event": "Send_Message2"
+    },
+    {
+      "id": "rcvMsg2Btn",
+      "event": "Recv_Message2"
+    },
+    {
+      "id": "sndMsg3BtnAtoB",
+      "event": "Send_Message3",
+      "predicates": ["sender=alice & receiver=bob & msg=(nb|->pkB)"]
+    },
+    {
+      "id": "sndMsg3BtnAtoS",
+      "event": "Send_Message3",
+      "predicates": ["sender=alice & receiver=spy & msg=(nb|->pkS)"]
+    },
+    {
+      "id": "rcvMsg3Btn",
+      "event": "Recv_Message3"
+    },
+    {
+      "id": "fakeIt1",
+      "event": "Recv_Message1",
+      "predicates": ["sender=alice & receiver=bob & msg=(idA|-> na|->pkB)"]
+    },
+    {
+      "id": "deduce1",
+      "event": "deduction1"
+    },
+    {
+      "id": "construct1",
+      "event": "deduction4"
+    }
+  ]
+}

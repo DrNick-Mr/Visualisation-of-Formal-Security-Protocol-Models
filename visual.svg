@@ -1,0 +1,273 @@
+<svg width="2500" height="1500" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="white" />
+    <text x="100" y="50" font-size="30" font-family="Arial" fill="black">Representation of Elements:</text>
+    
+    <rect x="100" y="100" width="50" height="50" fill="black" />
+    <text x="110" y="165" font-size="20" font-family="Arial" fill="black">IDs</text>
+    
+    <circle cx="300" cy="125" r="25" fill="black" />
+    <text x="270" y="165" font-size="20" font-family="Arial" fill="black">Nonces</text>
+    
+    <polygon points="500,60 520,100 560,100 530,130 540,170 500,150 460,170 470,130 440,100 480,100" fill="black" />
+    <text x="450" y="185" font-size="20" font-family="Arial" fill="black">Private Keys</text>
+    
+    <polygon points="700,75 750,150 650,150" fill="black" />
+    <text x="650" y="165" font-size="20" font-family="Arial" fill="black">Public Keys</text>
+
+    <!--Pick Initiator and Responder -->
+    <text id="pickInitiatorTxt" x="100" y="950" font-size="30" >Pick Initiator: </text>
+    <rect id="aliceInitiator" x="100" y="960" width="150" height="50" fill="gray"/>
+    <text id="aliceInitiatorTxt" x="120" y="995" font-size="30" >Alice </text>
+    <rect id="bobInitiator" x="260" y="960" width="150" height="50" fill="gray"/>
+    <text id="bobInitiatorTxt" x="280" y="995" font-size="30" >Bob </text>
+
+    <text id="pickResponderTxt" x="100" y="1060" font-size="30" >Pick Responder: </text>
+    <rect id="aliceResponder" x="100" y="1080" width="150" height="50" fill="gray"/>
+    <text id="aliceResponderTxt" x="120" y="1115" font-size="30" >Alice </text>
+    <rect id="spyResponder" x="260" y="1080" width="150" height="50" fill="gray"/>
+    <text id="spyResponderTxt" x="285" y="1115" font-size="30" >Spy</text>
+    <rect id="bobResponder" x="420" y="1080" width="150" height="50" fill="gray"/>
+    <text id="bobResponderTxt" x="445" y="1115" font-size="30" >Bob</text>
+
+
+
+    <!-- Alice -->
+    <text x="100" y="300" font-size="100" font-family="Arial">
+        <tspan x="100" y="300" fill="red">A</tspan>
+        <tspan x="100" y="420" fill="red">L</tspan>
+        <tspan x="100" y="540" fill="red">I</tspan>
+        <tspan x="100" y="660" fill="red">C</tspan>
+        <tspan x="100" y="780" fill="red">E</tspan>
+    </text>
+    <circle id="aliceNonceAtRest" cx="50" cy="300" r="25" fill="red" />
+    <rect id="aliceIDAtRest" x="30" y="400" width="60" height="60" fill="red" />
+
+
+    <!-- Spy -->
+    <text x="450" y="400" font-size="100" font-family="Arial">
+        <tspan x="550" y="350" fill="green">S</tspan>
+        <tspan x="550" y="520" fill="green">P</tspan>
+        <tspan x="550" y="690" fill="green">Y</tspan>
+    </text>
+
+    <!-- Bob -->
+    <text x="800" y="400" font-size="100" font-family="Arial">
+        <tspan x="1000" y="400" fill="blue">B</tspan>
+        <tspan x="1000" y="520" fill="blue">O</tspan>
+        <tspan x="1000" y="640" fill="blue">B</tspan>
+    </text>
+
+    <text x="1200" y="50" font-size="30" >What does the spy know?</text>
+    <polygon points="1220,70 1270,150 1180,150" fill="red" />
+    <polygon points="1320,70 1280,150 1380,150" fill="blue" />
+    <rect x="1400" y="70" width="60" height="60" fill="red" />
+    <rect x="1470" y="70" width="60" height="60" fill="blue" />
+
+    <!-- Deductions Table -->
+    <line x1="1200" y1="300" x2="1950" y2="300" stroke="black" stroke-width="3"/>
+    <line x1="1450" y1="200" x2="1450" y2="1300" stroke="black" stroke-width="3"/>
+    <line x1="1700" y1="200" x2="1700" y2="1300" stroke="black" stroke-width="3"/>
+    <text x="1250" y="250" font-size="30" font-family="Arial" fill="black">Msg1's</text>
+    <text x="1500" y="250" font-size="30" font-family="Arial" fill="black">Msg2's</text>
+    <text x="1750" y="250" font-size="30" font-family="Arial" fill="black">Msg3's</text>
+
+    <!-- Normal Run of the protocol (Alice as an initiator)-->
+    <!--Elements Msg1 -->
+    <!--Alice Sends-->
+    <rect id="boxMsg1" x="240" y="260" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+    <polygon id="bobPKmsg1" points="370,320 400,380 340,380" fill="blue" display="none" />
+    <line id="msg1Line" x1="170" y1="300" x2="240" y2="300" stroke="black" stroke-width="3" display="none"/>
+    <line id="msg1Arrow" x1="370" y1="300" x2="500" y2="300" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+    <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+        refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">
+        <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+    </marker>
+    </defs>
+    <circle id="aliceNonceMsg1Snd" cx="270" cy="300" r="25" fill="red" display="none" />
+    <rect id="aliceIDMsg1Snd" x="300" y="270" width="60" height="60" fill="red"  display="none" />
+
+    <!--Bob receives-->
+<rect id="boxMsg1Rcv" x="750" y="260" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg1Rcv" points="880,320 845,380 910,380" fill="blue" display="none" />
+<line id="msg1LineRcv" x1="630" y1="300" x2="750" y2="300" stroke="black" stroke-width="3" display="none"/>
+<line id="msg1ArrowRcv" x1="880" y1="300" x2="1000" y2="300" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<circle id="aliceNonceBobRcv" cx="780" cy="300" r="25" fill="red" display="none"/>
+<rect id="aliceIDBobRcv" x="810" y="270" width="60" height="60" fill="red" display="none"/>
+
+<!-- Elementes Msg2 -->
+<!--Bob sends -->
+<rect id="boxMsg2Snd" x="750" y="400" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<line id="msg2LineSnd" x1="990" y1="440" x2="880" y2="440" stroke="black" stroke-width="3" display="none"/>
+<line id="msg2ArrowSnd" x1="750" y1="440" x2="620" y2="440" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<polygon id="alicePKmsg2Snd" points="750,460 715,520 790,520" fill="red" display="none" />
+<circle id="aliceNonceBobSnd" cx="780" cy="440" r="25" fill="red" display="none"/>
+<circle id="bobNonceBobSnd" cx="840" cy="440" r="25" fill="blue" display="none"/>
+
+<!--Alice Receives -->
+<rect id="boxMsg2Rcv" x="240" y="400" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<line id="msg2LineRcv" x1="370" y1="440" x2="500" y2="440" stroke="black" stroke-width="3" display="none"/>
+<line id="msg2ArrowRcv" x1="240" y1="440" x2="170" y2="440" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<polygon id="alicePKmsg2Rcv" points="240,460 210,520 280,520" fill="red" display="none" />
+<circle id="aliceNonceAliceRcv" cx="270" cy="440" r="25" fill="red" display="none"/>
+<circle id="bobNonceAliceRcv" cx="330" cy="440" r="25" fill="blue" display="none"/>
+
+<!-- Elements Msg3 -->
+<!-- Alice Sends -->
+<rect id="boxMsg3Snd" x="240" y="550" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg3Snd" points="370,600 400,660 340,660" fill="blue" display="none" />
+<circle id="bobNonceAliceSnd" cx="300" cy="590" r="25" fill="blue" display="none"/>
+<line id="msg3ArrowSnd" x1="370" y1="590" x2="500" y2="590" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<line id="msg3LineSnd" x1="170" y1="590" x2="240" y2="590" stroke="black" stroke-width="3" display="none"/>
+
+<!--Bob receives -->
+<rect id="boxMsg3Rcv" x="750" y="550" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg3Rcv" points="880,600 845,660 910,660" fill="blue" display="none" />
+<circle id="bobNonceBobRcv" cx="815" cy="590" r="25" fill="blue" display="none"/>
+<line id="msg3ArrowRcv" x1="880" y1="590" x2="1000" y2="590" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<line id="msg3LineRcv" x1="630" y1="590" x2="750" y2="590" stroke="black" stroke-width="3" display="none"/>
+
+<!-- Normal Run of the protocol (Bob as an initiator)-->
+<!-- Bob as Initiator – Msg1: Bob → Alice -->
+<rect id="boxMsg1_BtoA" x="750" y="260" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="alicePKmsg1_BtoA" points="750,320 715,380 790,380" fill="red" display="none" />
+<line id="msg1Line_BtoA" x1="880" y1="300" x2="1000" y2="300" stroke="black" stroke-width="3" display="none"/>
+<line id="msg1Arrow_BtoA" x1="750" y1="300" x2="620" y2="300" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<circle id="bobNonceMsg1_BtoA" cx="780" cy="300" r="25" fill="blue" display="none" />
+<rect id="bobIDMsg1_BtoA" x="810" y="270" width="60" height="60" fill="blue" display="none" />
+
+<!-- Alice Receives Msg1 -->
+<rect id="boxMsg1Rcv_BtoA" x="240" y="260" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="alicePKmsg1Rcv_BtoA" points="240,320 210,380 280,380" fill="red" display="none" />
+<line id="msg1LineRcv_BtoA" x1="370" y1="300" x2="500" y2="300" stroke="black" stroke-width="3" display="none"/>
+<line id="msg1ArrowRcv_BtoA" x1="240" y1="300" x2="170" y2="300" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<circle id="bobNonceAliceRcv_BtoA" cx="270" cy="300" r="25" fill="blue" display="none"/>
+<rect id="bobIDAliceRcv_BtoA" x="300" y="270" width="60" height="60" fill="blue" display="none"/>
+
+<!-- Msg2: Alice → Bob -->
+<rect id="boxMsg2_BtoA" x="240" y="400" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg2_BtoA" points="370,460 400,520 340,520" fill="blue" display="none" />
+<circle id="bobNonceAliceSnd_BtoA" cx="270" cy="440" r="25" fill="blue" display="none"/>
+<circle id="aliceNonceAliceSnd_BtoA" cx="330" cy="440" r="25" fill="red" display="none"/>
+<line id="msg2Arrow_BtoA" x1="370" y1="440" x2="500" y2="440" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<line id="msg2Line_BtoA" x1="170" y1="440" x2="240" y2="440" stroke="black" stroke-width="3" display="none"/>
+
+<!-- Bob Receives Msg2 -->
+<rect id="boxMsg2Rcv_BtoA" x="750" y="400" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg2Rcv_BtoA" points="750,460 715,520 790,520" fill="blue" display="none" />
+<circle id="bobNonceBobRcv_BtoA" cx="780" cy="440" r="25" fill="blue" display="none"/>
+<circle id="aliceNonceBobRcv_BtoA" cx="840" cy="440" r="25" fill="red" display="none"/>
+<line id="msg2LineRcv_BtoA" x1="750" y1="440" x2="620" y2="440" stroke="black" stroke-width="3" display="none"/>
+<line id="msg2ArrowRcv_BtoA" x1="880" y1="440" x2="1000" y2="440"  stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+
+<!-- Msg3: Bob → Alice (Final) -->
+<rect id="boxMsg3_BtoA" x="750" y="550" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="alicePKmsg3_BtoA" points="750,600 715,660 790,660" fill="red" display="none" />
+<circle id="aliceNonceBobSnd_BtoA" cx="780" cy="590" r="25" fill="red" display="none"/>
+<line id="msg3Arrow_BtoA" x1="750" y1="590" x2="620" y2="590" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+<line id="msg3Line_BtoA" x1="880" y1="590" x2="1000" y2="590" stroke="black" stroke-width="3" display="none"/>
+
+<!-- Alice Receives Msg3 -->
+<rect id="boxMsg3Rcv_BtoA" x="240" y="550" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="alicePKmsg3Rcv_BtoA" points="240,600 210,660 280,660" fill="red" display="none" />
+<circle id="aliceNonceAliceRcv_BtoA" cx="270" cy="590" r="25" fill="red" display="none"/>
+<line id="msg3LineRcv_BtoA" x1="370" y1="590" x2="500" y2="590" stroke="black" stroke-width="3" display="none"/>
+<line id="msg3ArrowRcv_BtoA" x1="240" y1="590" x2="170" y2="590" stroke="black" stroke-width="3"  marker-end="url(#arrowhead)" display="none"/>
+
+
+<!-- Attack -->
+<!-- Msg1 Snd -->
+<polygon id="spyPKmsg1" points="370,320 400,380 340,380" fill="green" display="none" />
+<circle id="aliceNonceMsg1ToSpy" cx="270" cy="300" r="25" fill="red" display="none" />
+<rect id="aliceIDMsg1ToSpy" x="300" y="270" width="60" height="60" fill="red"  display="none" />
+<!--Msg1 Rcv -->
+<circle id="aliceNonceSpyToBobMsg1" cx="780" cy="300" r="25" fill="red" display="none"/>
+<rect id="aliceIDSpyToBobMsg1" x="810" y="270" width="60" height="60" fill="red" display="none"/>
+
+<!-- Msg2 Snd -->
+<polygon id="alicePKmsg2Snd" points="750,460 715,520 790,520" fill="red" display="none" />
+<circle id="aliceNonceBobSnd" cx="780" cy="440" r="25" fill="red" display="none"/>
+<circle id="bobNonceBobSnd" cx="840" cy="440" r="25" fill="blue" display="none"/>
+
+
+<!--Msg3 Snd -->
+<polygon id="spyPKmsg3Snd" points="370,600 400,660 340,660" fill="green" display="none" />
+<circle id="bobNonceAliceToSpy" cx="300" cy="590" r="25" fill="blue" display="none"/>
+
+
+<!--Deductions -->
+<line x1="1170" y1="40" x2="1170" y2="1300" stroke="black" stroke-width="3"/>
+
+<!--Messages 1 -->
+<rect id="boxMsg1DED" x="1240" y="330" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg1DED" points="1370,380 1400,440 1340,440" fill="blue" display="none" />
+<circle id="aliceNonceMsg1DED" cx="1270" cy="370" r="25" fill="red" display="none" />
+<rect id="aliceIDMsg1DED" x="1300" y="340" width="60" height="60" fill="red"  display="none" />
+
+<rect id="boxMsg1DED" x="1240" y="330" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg1DED" points="1370,380 1400,440 1340,440" fill="blue" display="none" />
+<circle id="aliceNonceMsg1DED" cx="1270" cy="370" r="25" fill="red" display="none" />
+<rect id="aliceIDMsg1DED" x="1300" y="340" width="60" height="60" fill="red"  display="none" />
+
+
+
+<!--Messages 2-->
+<rect id="boxMsg2DED" x="1500" y="330" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="alicePKmsg2DED" points="1630,380 1670,440 1590,440" fill="red" display="none" />
+<circle id="aliceNoncemsg2DED" cx="1530" cy="370" r="25" fill="red" display="none"/>
+<circle id="bobNoncemsg2DED" cx="1590" cy="370" r="25" fill="blue" display="none"/>
+
+<!--Messages 3-->
+<rect id="boxMsg3DED" x="1740" y="330" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
+<polygon id="bobPKmsg3DED" points="1870,380 1900,440 1840,440" fill="blue" display="none" />
+<circle id="bobNoncemsg3DED" cx="1800" cy="370" r="25" fill="blue" display="none"/>
+
+<!-- Nonces -->
+<circle id="aliceNonceDED" cx="1600" cy="100" r="25" fill="red" display="none" />
+<circle id="bobNonceDED" cx="1660" cy="100" r="25" fill="blue" display="none"/>
+
+<!-- Buttons -->
+<!--Send message buttons-->
+<rect id="sndMsg1Btn" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="sndMsg1BtnTxt" x="110" y="995" font-size="25" display="none"> Send Msg 1</text>
+
+<rect id="sndMsg2Btn" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="sndMsg2BtnTxt" x="110" y="995" font-size="25" display="none"> Send Msg 2</text>
+
+<rect id="sndMsg3BtnAtoB" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
+<rect id="sndMsg3BtnAtoS" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="sndMsg3BtnTxt" x="110" y="995" font-size="25" display="none"> Send Msg 3</text>
+
+
+<rect id="rcvMsg1Btn" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="rcvMsg1BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 1</text>
+<rect id="rcvMsg2Btn" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="rcvMsg2BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 2</text>
+<rect id="rcvMsg3Btn" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="rcvMsg3BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 3</text>
+
+<!-- Spy Buttons-->
+<rect id="fakeIt1" x="450" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="fakeIt1Txt" x="460" y="995" font-size="25" display="none" > Fake It! 1</text>
+
+<rect id="construct1" x="1250" y="1350" width="160" height="60" fill="gray" display="block"/>
+<text id="constrct1Txt" x="1260" y="1380" font-size="25" display="block" > construct! 1</text>
+
+<rect id="construct2" x="1500" y="1350" width="160" height="60" fill="gray" display="block"/>
+<text id="constrct2Txt" x="1510" y="1380" font-size="25" display="block" > constuct! 2</text>
+
+<rect id="construct3" x="1750" y="1350" width="160" height="60" fill="gray" display="block"/>
+<text id="constrct3Txt" x="1760" y="1380" font-size="25" display="block" > constuct! 3</text>
+
+<rect id="deduce1" x="2000" y="350" width="160" height="60" fill="gray" display="block"/>
+<text id="deduce1Txt" x="2010" y="390" font-size="25" display="block" > deduce! 1</text>
+
+<rect id="deduce2" x="2000" y="450" width="160" height="60" fill="gray" display="block"/>
+<text id="deduce2Txt" x="2010" y="490" font-size="25" display="block" > deduce! 2</text>
+
+<rect id="deduce3" x="2000" y="550" width="160" height="60" fill="gray" display="block"/>
+<text id="deduce3Txt" x="2010" y="590" font-size="25" display="block" > deduce! 3</text>
+
+
+</svg>
+
