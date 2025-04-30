@@ -4,7 +4,8 @@ AGENTS = {noneAgent,alice, bob, spy};
 PUBLIC_KEYS = {pkA, pkB, pkS};
 PRIVATE_KEYS = {skA,skB,skS};
 IDENTITIES = {idA,idB,idS};
-NONCES = {na,nb,ns}
+NONCES = {na,nb,ns};
+ROLES = {init,resp,norole}
 
 VARIABLES
 nonce,
@@ -13,20 +14,17 @@ private_key,
 key_pair,
 counter,
 identity,
-initiator,
-responder,
 KNOWN_IDENTITIES,
 KNOWN_NONCES,
 KNOWN_PUBLIC_KEYS,
 KNOWN_PRIVATE_KEYS,
 KNOWN_MESSAGE1,
 KNOWN_MESSAGE2,
-KNOWN_MESSAGE3
+KNOWN_MESSAGE3,
+role
 
 INVARIANT
 nonce: AGENTS --> NONCES &
-initiator : AGENTS &
-responder : AGENTS &
 public_key: AGENTS --> PUBLIC_KEYS &
 private_key: AGENTS --> PRIVATE_KEYS &
 identity: AGENTS --> IDENTITIES &
@@ -38,7 +36,8 @@ KNOWN_PUBLIC_KEYS : POW(PUBLIC_KEYS) &
 KNOWN_PRIVATE_KEYS : POW(PRIVATE_KEYS) &
 KNOWN_MESSAGE1 : POW(IDENTITIES * NONCES * PUBLIC_KEYS) &
 KNOWN_MESSAGE2 : POW(NONCES * NONCES * PUBLIC_KEYS) &
-KNOWN_MESSAGE3 : POW(NONCES * PUBLIC_KEYS) 
+KNOWN_MESSAGE3 : POW(NONCES * PUBLIC_KEYS) & 
+role: AGENTS +-> ROLES
 
 INITIALISATION
 nonce := {alice |-> na, bob |-> nb, spy |-> ns, noneAgent |-> ns} ||
@@ -47,8 +46,7 @@ private_key := {alice |-> skA, bob |-> skB, spy |-> skS, noneAgent |-> skS} ||
 identity := {alice |-> idA, bob |-> idB, spy |-> idS, noneAgent |-> idS} ||
 key_pair := {pkA |-> skA, pkB |-> skB, pkS |-> skS} ||
 counter := {alice |-> 0, bob |-> 0, spy |-> 0, noneAgent |-> 0} ||
-initiator := noneAgent ||
-responder := noneAgent ||
+role := {alice |-> norole, bob |-> norole} ||
 KNOWN_PUBLIC_KEYS := {pkA,pkB,pkS} ||
 KNOWN_PRIVATE_KEYS := {skS} ||
 KNOWN_IDENTITIES := {idA,idB,idS} ||
@@ -60,91 +58,86 @@ KNOWN_MESSAGE3 := {}
 
 OPERATIONS
 
-    Select_initiator(initiator_local) =
-    PRE 
-    initiator_local : AGENTS\{noneAgent,spy} & 
-    initiator_local /= responder &
-    counter(initiator_local) = 0
-    THEN
-    initiator := initiator_local
-    END;
-
-    Select_responder(responder_local) =
-    PRE 
-    responder_local : AGENTS\{noneAgent,initiator} &
-    counter(responder_local) = 0
-    THEN
-    responder := responder_local
-    END;
-
-
-    Send_Message1(receiver, msg) =
+    Send_Message1(sender,receiver, msg) =
     PRE
-        receiver = responder &
-        msg : {identity(initiator)} * {nonce(initiator)} * {public_key(receiver)} &
-        counter(initiator) = 0
+        sender :AGENTS\{spy,noneAgent} &
+        receiver :AGENTS\{noneAgent} &
+        msg : {identity(sender)} * {nonce(sender)} * {public_key(receiver)} &
+        sender /= receiver &
+	counter(sender) = 0 &
+	role(sender) = norole
     THEN
         KNOWN_MESSAGE1 := KNOWN_MESSAGE1 \/ {msg} ||
-        counter(initiator) := 1
+        counter(sender) := 1 ||
+	role(sender) := init
     END;
 
     Send_Message2(sender,receiver,msg) =
     PRE
-        sender :AGENTS\{spy,initiator,noneAgent} &
-        receiver = initiator &
-        msg : {nonce(initiator)} * {nonce(sender)}  * {public_key(receiver)} &
-        counter(responder) = 1 
+        sender :AGENTS\{spy,noneAgent} &
+        receiver :AGENTS\{noneAgent} &
+        msg : {nonce(receiver)} * {nonce(sender)}  * {public_key(receiver)} &
+	sender /= receiver &
+        counter(sender) = 1 &
+	role(sender) = resp 
     THEN
         KNOWN_MESSAGE2 := KNOWN_MESSAGE2 \/ {msg} ||
-        counter(responder) := 2
+        counter(sender) := 2
     END;
 
     Send_Message3(sender, receiver, msg) =
     PRE
-        sender: AGENTS\{spy,responder, noneAgent} &
+        sender: AGENTS\{spy,noneAgent} &
         receiver: AGENTS\{noneAgent} &
-        msg : NONCES * {public_key(responder)} &
+        msg : NONCES * {public_key(receiver)} &
         sender /= receiver &
-        counter(initiator) = 2
+        counter(sender) = 2 &
+	role(sender) = init
     THEN
         KNOWN_MESSAGE3 := KNOWN_MESSAGE3 \/ {msg} ||
-        counter(initiator) := 3
+        counter(sender) := 0 ||
+	role(sender) := norole
     END;
 
     Recv_Message1(sender, receiver, msg) =
     PRE
-        sender = initiator &
-        receiver :  AGENTS\{noneAgent,initiator} &
+        sender :  AGENTS\{noneAgent} &
+        receiver :  AGENTS\{spy,noneAgent} &
         msg : {identity(sender)} * NONCES * {public_key(receiver)} &
         sender /= receiver &
         msg: KNOWN_MESSAGE1 &
-        counter(receiver) = 0
+        counter(receiver) = 0 &
+	role(receiver) = norole
     THEN
-    counter(receiver) := 1
+    counter(receiver) := 1 ||
+    role(receiver) := resp
+
     END;
 
     Recv_Message2(sender,receiver,msg) =
     PRE
-        sender: AGENTS\{spy,initiator,noneAgent} &
-        receiver: AGENTS\{spy,responder} &
+        sender: AGENTS\{noneAgent} &
+        receiver: AGENTS\{spy,noneAgent} &
         sender /= receiver &
         msg : NONCES * NONCES * PUBLIC_KEYS &
         msg: KNOWN_MESSAGE2 &
-        counter(receiver) = 1
+        counter(receiver) = 1 &
+	role(receiver) = init
     THEN
         counter(receiver) := 2
     END;
 
     Recv_Message3(sender, receiver, msg) =
     PRE
-        sender: AGENTS\{responder,noneAgent,spy} &
-        receiver: AGENTS\{noneAgent} &
+        sender: AGENTS\{noneAgent} &
+        receiver: AGENTS\{spy,noneAgent} &
         msg : NONCES * PUBLIC_KEYS&
         sender /= receiver &
         msg: KNOWN_MESSAGE3 &
-        counter(responder) >= 2
+        counter(receiver) = 2
     THEN
-        counter(responder) := 3
+        counter(receiver) := 0 ||
+	role(receiver) := norole
     END;
 
     //Decrypt message 1 when private_key is known by spy
