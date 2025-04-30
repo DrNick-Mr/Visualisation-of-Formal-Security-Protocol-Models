@@ -442,12 +442,20 @@
       "display": "IF counter(responder) = 2 & counter(initiator) = 2 THEN \"block\" ELSE \"none\" END"
     },
     {
-      "id": "rcvMsg3Btn",
+      "id": "rcvMsg3BtnAtoB",
       "display": "IF counter(initiator) = 3 & counter(responder) = 2 THEN \"block\" ELSE \"none\" END"
     },
     {
-      "id": "rcvMsg3BtnTxt",
+      "id": "rcvMsg3BtnTxtAtoB",
       "display": "IF counter(initiator) = 3 & counter(responder) = 2 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "rcvMsg3BtnTxtStoB",
+      "display": "IF counter(initiator) = 3 & counter(responder) = 2 & counter(bob) = 1 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "rcvMsg3BtnStoB",
+      "display": "IF counter(initiator) = 3 & counter(responder) = 2 & counter(bob) = 1 THEN \"block\" ELSE \"none\" END"
     },
     {
       "id": "fakeIt1",
@@ -506,12 +514,17 @@
       "predicates": ["sender=alice & receiver=bob & msg=(nb|->pkB)"]
     },
     {
+      "id": "sndMsg3BtnAtoB",
+      "event": "Send_Message3",
+      "predicates": ["sender=bob & receiver=alice & msg=(na|->pkA)"]
+    },
+    {
       "id": "sndMsg3BtnAtoS",
       "event": "Send_Message3",
       "predicates": ["sender=alice & receiver=spy & msg=(nb|->pkS)"]
     },
     {
-      "id": "rcvMsg3Btn",
+      "id": "rcvMsg3BtnAtoB",
       "event": "Recv_Message3"
     },
     {
@@ -520,12 +533,33 @@
       "predicates": ["sender=alice & receiver=bob & msg=(idA|-> na|->pkB)"]
     },
     {
+      "id": "rcvMsg3BtnStoB",
+      "event": "Recv_Message3",
+      "predicates": ["sender=alice & receiver=bob & msg=(nb|->pkB)"]
+    },
+    {
       "id": "deduce1",
       "event": "deduction1"
     },
     {
       "id": "construct1",
       "event": "deduction4"
+    },
+    {
+      "id": "deduce2",
+      "event": "deduction2"
+    },
+    {
+      "id": "construct2",
+      "event": "deduction5"
+    },
+    {
+      "id": "deduce3",
+      "event": "deduction3"
+    },
+    {
+      "id": "construct3",
+      "event": "deduction6"
     }
   ]
 }

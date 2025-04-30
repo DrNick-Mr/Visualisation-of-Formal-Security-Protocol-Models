@@ -243,8 +243,10 @@
 <text id="rcvMsg1BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 1</text>
 <rect id="rcvMsg2Btn" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
 <text id="rcvMsg2BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 2</text>
-<rect id="rcvMsg3Btn" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="rcvMsg3BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 3</text>
+<rect id="rcvMsg3BtnAtoB" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="rcvMsg3BtnTxtAtoB" x="310" y="995" font-size="25" display="none" > Rcv Msg 3</text>
+<rect id="rcvMsg3BtnStoB" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
+<text id="rcvMsg3BtnTxtStoB" x="310" y="995" font-size="25" display="none" > Fake It! 3</text>
 
 <!-- Spy Buttons-->
 <rect id="fakeIt1" x="450" y="960" width="150" height="50" fill="gray" display="none"/>
