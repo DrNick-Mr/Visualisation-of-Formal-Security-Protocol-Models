@@ -1,6 +1,6 @@
 MACHINE nspk_protocol
 SETS
-AGENTS = {noneAgent,alice, bob, spy};
+AGENTS = {alice, bob, spy};
 PUBLIC_KEYS = {pkA, pkB, pkS};
 PRIVATE_KEYS = {skA,skB,skS};
 IDENTITIES = {idA,idB,idS};
@@ -40,12 +40,12 @@ KNOWN_MESSAGE3 : POW(NONCES * PUBLIC_KEYS) &
 role: AGENTS +-> ROLES
 
 INITIALISATION
-nonce := {alice |-> na, bob |-> nb, spy |-> ns, noneAgent |-> ns} ||
-public_key := {alice |-> pkA, bob |-> pkB, spy |-> pkS, noneAgent |-> pkS} ||
-private_key := {alice |-> skA, bob |-> skB, spy |-> skS, noneAgent |-> skS} ||
-identity := {alice |-> idA, bob |-> idB, spy |-> idS, noneAgent |-> idS} ||
+nonce := {alice |-> na, bob |-> nb, spy |-> ns} ||
+public_key := {alice |-> pkA, bob |-> pkB, spy |-> pkS} ||
+private_key := {alice |-> skA, bob |-> skB, spy |-> skS} ||
+identity := {alice |-> idA, bob |-> idB, spy |-> idS} ||
 key_pair := {pkA |-> skA, pkB |-> skB, pkS |-> skS} ||
-counter := {alice |-> 0, bob |-> 0, spy |-> 0, noneAgent |-> 0} ||
+counter := {alice |-> 0, bob |-> 0, spy |-> 0} ||
 role := {alice |-> norole, bob |-> norole} ||
 KNOWN_PUBLIC_KEYS := {pkA,pkB,pkS} ||
 KNOWN_PRIVATE_KEYS := {skS} ||
@@ -60,8 +60,8 @@ OPERATIONS
 
     Send_Message1(sender,receiver, msg) =
     PRE
-        sender :AGENTS\{spy,noneAgent} &
-        receiver :AGENTS\{noneAgent} &
+        sender :AGENTS\{spy} &
+        receiver :AGENTS &
         msg : {identity(sender)} * {nonce(sender)} * {public_key(receiver)} &
         sender /= receiver &
 	counter(sender) = 0 &
@@ -74,8 +74,8 @@ OPERATIONS
 
     Send_Message2(sender,receiver,msg) =
     PRE
-        sender :AGENTS\{spy,noneAgent} &
-        receiver :AGENTS\{noneAgent} &
+        sender :AGENTS\{spy} &
+        receiver :AGENTS &
         msg : {nonce(receiver)} * {nonce(sender)}  * {public_key(receiver)} &
 	sender /= receiver &
         counter(sender) = 1 &
@@ -87,8 +87,8 @@ OPERATIONS
 
     Send_Message3(sender, receiver, msg) =
     PRE
-        sender: AGENTS\{spy,noneAgent} &
-        receiver: AGENTS\{noneAgent} &
+        sender: AGENTS\{spy} &
+        receiver: AGENTS &
         msg : NONCES * {public_key(receiver)} &
         sender /= receiver &
         counter(sender) = 2 &
@@ -101,8 +101,8 @@ OPERATIONS
 
     Recv_Message1(sender, receiver, msg) =
     PRE
-        sender :  AGENTS\{noneAgent} &
-        receiver :  AGENTS\{spy,noneAgent} &
+        sender :  AGENTS &
+        receiver :  AGENTS\{spy} &
         msg : {identity(sender)} * NONCES * {public_key(receiver)} &
         sender /= receiver &
         msg: KNOWN_MESSAGE1 &
@@ -116,8 +116,8 @@ OPERATIONS
 
     Recv_Message2(sender,receiver,msg) =
     PRE
-        sender: AGENTS\{noneAgent} &
-        receiver: AGENTS\{spy,noneAgent} &
+        sender: AGENTS &
+        receiver: AGENTS\{spy} &
         sender /= receiver &
         msg : NONCES * NONCES * PUBLIC_KEYS &
         msg: KNOWN_MESSAGE2 &
@@ -129,8 +129,8 @@ OPERATIONS
 
     Recv_Message3(sender, receiver, msg) =
     PRE
-        sender: AGENTS\{noneAgent} &
-        receiver: AGENTS\{spy,noneAgent} &
+        sender: AGENTS &
+        receiver: AGENTS\{spy} &
         msg : NONCES * PUBLIC_KEYS&
         sender /= receiver &
         msg: KNOWN_MESSAGE3 &
