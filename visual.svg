@@ -14,20 +14,59 @@
     <polygon points="700,75 750,150 650,150" fill="black" />
     <text x="650" y="165" font-size="20" font-family="Arial" fill="black">Public Keys</text>
 
-    <!--Pick Initiator and Responder -->
-    <text id="pickInitiatorTxt" x="100" y="950" font-size="30" >Pick Initiator: </text>
-    <rect id="aliceInitiator" x="100" y="960" width="150" height="50" fill="gray"/>
-    <text id="aliceInitiatorTxt" x="120" y="995" font-size="30" >Alice </text>
-    <rect id="bobInitiator" x="260" y="960" width="150" height="50" fill="gray"/>
-    <text id="bobInitiatorTxt" x="280" y="995" font-size="30" >Bob </text>
+    <!--Participants Behaviour -->
+    <!--Alice-->
+    <!-- Sends-->
+    <text id="aliceBehaviourTxt" x="100" y="950" font-size="30" >ALICE: </text>
+    <rect id="aliceSndMsg1Btn" x="100" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceSndMsg1Txt" x="120" y="1000" font-size="30" >Send Msg1 to Bob </text>
 
-    <text id="pickResponderTxt" x="100" y="1060" font-size="30" >Pick Responder: </text>
-    <rect id="aliceResponder" x="100" y="1080" width="150" height="50" fill="gray"/>
-    <text id="aliceResponderTxt" x="120" y="1115" font-size="30" >Alice </text>
-    <rect id="spyResponder" x="260" y="1080" width="150" height="50" fill="gray"/>
-    <text id="spyResponderTxt" x="285" y="1115" font-size="30" >Spy</text>
-    <rect id="bobResponder" x="420" y="1080" width="150" height="50" fill="gray"/>
-    <text id="bobResponderTxt" x="445" y="1115" font-size="30" >Bob</text>
+    <rect id="aliceSndMsg2Btn" x="100" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceSndMsg2Txt" x="120" y="1000" font-size="30" >Send Msg2 to Bob </text>
+
+    <rect id="aliceSndMsg3Btn" x="100" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceSndMsg3Txt" x="120" y="1000" font-size="30" >Send Msg3 to Bob </text>
+
+    <rect id="aliceSndMsg1Btn_ToSpy" x="760" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceSndMsg1Txt_ToSpy" x="780" y="1000" font-size="30" >Send Msg1 to Spy </text>
+
+    <rect id="aliceSndMsg3Btn_ToSpy" x="750" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceSndMsg3Txt_ToSpy" x="770" y="1000" font-size="30" >Send Msg3 to Spy </text>
+
+
+    <!--Receives-->
+    <rect id="aliceRcvMsg3Btn" x="450" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceRcvMsg3Txt" x="460" y="1000" font-size="30" >Rcv Msg3 From Bob</text>
+
+    <rect id="aliceRcvMsg2Btn" x="450" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceRcvMsg2Txt" x="460" y="1000" font-size="30" >Rcv Msg2 From Bob</text>
+
+    <rect id="aliceRcvMsg1Btn" x="450" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceRcvMsg1Txt" x="460" y="1000" font-size="30" >Rcv Msg1 From Bob</text>
+
+    <rect id="aliceRcvMsg2Btn_FromSpy" x="450" y="960" width="300" height="80" fill="gray"/>
+    <text id="aliceRcvMsg2Txt_FromSpy" x="460" y="1000" font-size="30" >Rcv Msg2 From Spy</text>
+    <!--Bob-->
+    <!--Sends-->
+    <text id="bobBehaviourTxt" x="100" y="1100" font-size="30" >BOB: </text>
+    <rect id="bobSndMsg1Btn" x="100" y="1110" width="300" height="80" fill="gray"/>
+    <text id="bobSndMsg1Txt" x="120" y="1150" font-size="30" >Send Msg1 to Alice </text>
+
+    <rect id="bobSndMsg2Btn" x="100" y="1110" width="300" height="80" fill="gray"/>
+    <text id="bobSndMsg2Txt" x="120" y="1150" font-size="30" >Send Msg2 To Alice</text>
+
+    <rect id="bobSndMsg3Btn" x="100" y="1110" width="300" height="80" fill="gray"/>
+    <text id="bobSndMsg3Txt" x="120" y="1150" font-size="30" >Send Msg3 To Alice</text>
+
+    <!--Receives-->
+    <rect id="bobRcvMsg1Btn" x="450" y="1110" width="300" height="80" fill="gray"/>
+    <text id="bobRcvMsg1Txt" x="450" y="1150" font-size="30" >Rcv Msg1 From Alice</text>
+
+    <rect id="bobRcvMsg3Btn" x="450" y="1110" width="300" height="80" fill="gray"/>
+    <text id="bobRcvMsg3Txt" x="450" y="1150" font-size="30" >Rcv Msg3 From Alice</text>
+
+    <rect id="bobRcvMsg2Btn" x="450" y="1110" width="300" height="80" fill="gray"/>
+    <text id="bobRcvMsg2Txt" x="450" y="1150" font-size="30" >Rcv Msg2 From Alice</text>
 
 
 
@@ -174,13 +213,21 @@
 
 
 <!-- Attack -->
+<!--Spy Behaviour-->
+<text id="SpyBehaviourTxt" x="100" y="1250" font-size="30" >SPY: </text>
+<rect id="spySndMsg1Btn_ToBob" x="100" y="1260" width="300" height="80" fill="gray"/>
+<text id="spySndMsg1Txt_ToBob" x="120" y="1300" font-size="30" >fake Msg1 to Bob</text>
+
+<rect id="spySndMsg3Btn_ToBob" x="100" y="1260" width="300" height="80" fill="gray"/>
+<text id="spySndMsg3Txt_ToBob" x="120" y="1300" font-size="30" >fake Msg3 to Bob</text>
+
 <!-- Msg1 Snd -->
-<polygon id="spyPKmsg1" points="370,320 400,380 340,380" fill="green" display="none" />
+<polygon id="spyPkMsg1" points="370,320 400,380 340,380" fill="green" display="none" />
 <circle id="aliceNonceMsg1ToSpy" cx="270" cy="300" r="25" fill="red" display="none" />
-<rect id="aliceIDMsg1ToSpy" x="300" y="270" width="60" height="60" fill="red"  display="none" />
+<rect id="aliceIdMsg1ToSpy" x="300" y="270" width="60" height="60" fill="red"  display="none" />
 <!--Msg1 Rcv -->
 <circle id="aliceNonceSpyToBobMsg1" cx="780" cy="300" r="25" fill="red" display="none"/>
-<rect id="aliceIDSpyToBobMsg1" x="810" y="270" width="60" height="60" fill="red" display="none"/>
+<rect id="aliceIdSpyToBobMsg1" x="810" y="270" width="60" height="60" fill="red" display="none"/>
 
 <!-- Msg2 Snd -->
 <polygon id="alicePKmsg2Snd" points="750,460 715,520 790,520" fill="red" display="none" />
@@ -189,7 +236,7 @@
 
 
 <!--Msg3 Snd -->
-<polygon id="spyPKmsg3Snd" points="370,600 400,660 340,660" fill="green" display="none" />
+<polygon id="spyPkMsg3Snd" points="370,600 400,660 340,660" fill="green" display="none" />
 <circle id="bobNonceAliceToSpy" cx="300" cy="590" r="25" fill="blue" display="none"/>
 
 
@@ -224,32 +271,8 @@
 <circle id="aliceNonceDED" cx="1600" cy="100" r="25" fill="red" display="none" />
 <circle id="bobNonceDED" cx="1660" cy="100" r="25" fill="blue" display="none"/>
 
-<!-- Buttons -->
-<!--Send message buttons-->
-<rect id="sndMsg1Btn" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="sndMsg1BtnTxt" x="110" y="995" font-size="25" display="none"> Send Msg 1</text>
-
-<rect id="sndMsg2Btn" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="sndMsg2BtnTxt" x="110" y="995" font-size="25" display="none"> Send Msg 2</text>
-
-<rect id="sndMsg3BtnAtoB" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
-<rect id="sndMsg3BtnAtoS" x="100" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="sndMsg3BtnTxt" x="110" y="995" font-size="25" display="none"> Send Msg 3</text>
-
-
-<rect id="rcvMsg1Btn" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="rcvMsg1BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 1</text>
-<rect id="rcvMsg2Btn" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="rcvMsg2BtnTxt" x="310" y="995" font-size="25" display="none" > Rcv Msg 2</text>
-<rect id="rcvMsg3BtnAtoB" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="rcvMsg3BtnTxtAtoB" x="310" y="995" font-size="25" display="none" > Rcv Msg 3</text>
-<rect id="rcvMsg3BtnStoB" x="300" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="rcvMsg3BtnTxtStoB" x="310" y="995" font-size="25" display="none" > Fake It! 3</text>
 
 <!-- Spy Buttons-->
-<rect id="fakeIt1" x="450" y="960" width="150" height="50" fill="gray" display="none"/>
-<text id="fakeIt1Txt" x="460" y="995" font-size="25" display="none" > Fake It! 1</text>
-
 <rect id="construct1" x="1250" y="1350" width="160" height="60" fill="gray" display="block"/>
 <text id="constrct1Txt" x="1260" y="1380" font-size="25" display="block" > construct! 1</text>
 

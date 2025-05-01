@@ -3,7 +3,7 @@ SETS
 AGENTS = {alice, bob, spy};
 PUBLIC_KEYS = {pkA, pkB, pkS};
 PRIVATE_KEYS = {skA,skB,skS};
-IDENTITIES = {idA,idB,idS};
+IDENTITIES = {idA,idB,idS, noone};
 NONCES = {na,nb,ns};
 ROLES = {init,resp,norole}
 
@@ -21,7 +21,8 @@ KNOWN_PRIVATE_KEYS,
 KNOWN_MESSAGE1,
 KNOWN_MESSAGE2,
 KNOWN_MESSAGE3,
-role
+role,
+belief
 
 INVARIANT
 nonce: AGENTS --> NONCES &
@@ -37,7 +38,8 @@ KNOWN_PRIVATE_KEYS : POW(PRIVATE_KEYS) &
 KNOWN_MESSAGE1 : POW(IDENTITIES * NONCES * PUBLIC_KEYS) &
 KNOWN_MESSAGE2 : POW(NONCES * NONCES * PUBLIC_KEYS) &
 KNOWN_MESSAGE3 : POW(NONCES * PUBLIC_KEYS) & 
-role: AGENTS +-> ROLES
+role: AGENTS +-> ROLES &
+belief: AGENTS +-> IDENTITIES
 
 INITIALISATION
 nonce := {alice |-> na, bob |-> nb, spy |-> ns} ||
@@ -47,6 +49,7 @@ identity := {alice |-> idA, bob |-> idB, spy |-> idS} ||
 key_pair := {pkA |-> skA, pkB |-> skB, pkS |-> skS} ||
 counter := {alice |-> 0, bob |-> 0, spy |-> 0} ||
 role := {alice |-> norole, bob |-> norole} ||
+belief := {alice |-> idA, bob |-> idB, spy |-> idS} ||
 KNOWN_PUBLIC_KEYS := {pkA,pkB,pkS} ||
 KNOWN_PRIVATE_KEYS := {skS} ||
 KNOWN_IDENTITIES := {idA,idB,idS} ||
@@ -64,12 +67,14 @@ OPERATIONS
         receiver :AGENTS &
         msg : {identity(sender)} * {nonce(sender)} * {public_key(receiver)} &
         sender /= receiver &
-	counter(sender) = 0 &
-	role(sender) = norole
+        counter(sender) = 0 &
+        role(sender) = norole &
+        belief(sender) /= belief(receiver)
     THEN
         KNOWN_MESSAGE1 := KNOWN_MESSAGE1 \/ {msg} ||
         counter(sender) := 1 ||
-	role(sender) := init
+        role(sender) := init ||
+        belief(sender) := identity(receiver)
     END;
 
     Send_Message2(sender,receiver,msg) =
@@ -77,9 +82,10 @@ OPERATIONS
         sender :AGENTS\{spy} &
         receiver :AGENTS &
         msg : {nonce(receiver)} * {nonce(sender)}  * {public_key(receiver)} &
-	sender /= receiver &
+        sender /= receiver &
         counter(sender) = 1 &
-	role(sender) = resp 
+        role(sender) = resp &
+        belief(sender) = identity(receiver)
     THEN
         KNOWN_MESSAGE2 := KNOWN_MESSAGE2 \/ {msg} ||
         counter(sender) := 2
@@ -92,11 +98,11 @@ OPERATIONS
         msg : NONCES * {public_key(receiver)} &
         sender /= receiver &
         counter(sender) = 2 &
-	role(sender) = init
+        role(sender) = init &
+        belief(sender) = identity(receiver)
     THEN
         KNOWN_MESSAGE3 := KNOWN_MESSAGE3 \/ {msg} ||
-        counter(sender) := 0 ||
-	role(sender) := norole
+        counter(sender) := 3
     END;
 
     Recv_Message1(sender, receiver, msg) =
@@ -107,10 +113,11 @@ OPERATIONS
         sender /= receiver &
         msg: KNOWN_MESSAGE1 &
         counter(receiver) = 0 &
-	role(receiver) = norole
+        role(receiver) = norole 
     THEN
     counter(receiver) := 1 ||
-    role(receiver) := resp
+    role(receiver) := resp ||
+    belief(receiver) := identity(sender)
 
     END;
 
@@ -122,7 +129,8 @@ OPERATIONS
         msg : NONCES * NONCES * PUBLIC_KEYS &
         msg: KNOWN_MESSAGE2 &
         counter(receiver) = 1 &
-	role(receiver) = init
+        role(receiver) = init &
+        belief(receiver) = identity(sender)
     THEN
         counter(receiver) := 2
     END;
@@ -134,10 +142,10 @@ OPERATIONS
         msg : NONCES * PUBLIC_KEYS&
         sender /= receiver &
         msg: KNOWN_MESSAGE3 &
-        counter(receiver) = 2
+        counter(receiver) = 2 &
+        belief(receiver) = identity(sender)
     THEN
-        counter(receiver) := 0 ||
-	role(receiver) := norole
+        counter(receiver) := 3
     END;
 
     //Decrypt message 1 when private_key is known by spy
