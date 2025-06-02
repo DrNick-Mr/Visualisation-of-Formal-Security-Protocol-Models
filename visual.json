@@ -11,19 +11,19 @@
     },
     {
       "id": "bobSndMsg1Btn",
-      "display": "IF role(bob) = norole & belief(alice) /= idB THEN \"block\" ELSE \"none\" END"
+      "display": "IF role(bob) = norole & belief(alice) = idA THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobSndMsg1Txt",
+      "display": "IF role(bob) = norole & belief(alice) = idA THEN \"block\" ELSE \"none\" END"
     },
     {
       "id": "aliceSndMsg1Btn_ToSpy",
-      "display": "IF role(alice) = norole & belief(alice) = idA & belief(bob) /= idA THEN \"block\" ELSE \"none\" END"
+      "display": "IF  belief(alice) = idA & belief(bob) = idB THEN \"block\" ELSE \"none\" END"
     },
     {
       "id": "aliceSndMsg1Txt_ToSpy",
       "display": "IF role(alice) = norole & belief(alice) = idA & belief(bob) /= idA THEN \"block\" ELSE \"none\" END"
-    },
-    {
-      "id": "bobSndMsg1Txt",
-      "display": "IF role(bob) = norole & belief(alice) /= idB THEN \"block\" ELSE \"none\" END"
     },
     {
       "id": "aliceNonceMsg1Snd",
@@ -423,11 +423,63 @@
     },
     {
       "id": "spySndMsg3Btn_ToBob",
-      "display": "IF counter(alice) = 3 & counter(bob) = 2 & belief(alice) = idS & (nb|->pkB) : KNOWN_MESSAGE3 THEN\"block\" ELSE \"none\" END"
+      "display": "IF counter(alice) = 3 & counter(bob) = 2 & belief(alice) = idS & (nb|->pkB) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
     },
     {
       "id": "spySndMsg3Txt_ToBob",
-      "display": "IF counter(alice) = 3 & counter(bob) = 2 & belief(alice) = idS & (nb|->pkB) : KNOWN_MESSAGE3 THEN\"block\" ELSE \"none\" END"
+      "display": "IF counter(alice) = 3 & counter(bob) = 2 & belief(alice) = idS & (nb|->pkB) : KNOWN_MESSAGE3 THEN \"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg1DED",
+      "display": "IF (idA|->na|->pkB) : KNOWN_MESSAGE1 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg1DED",
+      "display": "IF (idA|->na|->pkB) : KNOWN_MESSAGE1 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceMsg1DED",
+      "display": "IF (idA|->na|->pkB) : KNOWN_MESSAGE1 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceIDMsg1DED",
+      "display": "IF (idA|->na|->pkB) : KNOWN_MESSAGE1 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg2DED",
+      "display": "IF (na|->nb|->pkA) : KNOWN_MESSAGE2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "alicePKmsg2DED",
+      "display": "IF (na|->nb|->pkA) : KNOWN_MESSAGE2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNoncemsg2DED",
+      "display": "IF (na|->nb|->pkA) : KNOWN_MESSAGE2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNoncemsg2DED",
+      "display": "IF (na|->nb|->pkA) : KNOWN_MESSAGE2 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "boxMsg3DED",
+      "display": "IF (nb|-> pkB) : KNOWN_MESSAGE3 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobPKmsg3DED",
+      "display": "IF (nb|-> pkB) : KNOWN_MESSAGE3 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNoncemsg3DED",
+      "display": "IF (nb|-> pkB) : KNOWN_MESSAGE3 THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "aliceNonceDED",
+      "display": "IF (na) : KNOWN_NONCES THEN\"block\" ELSE \"none\" END"
+    },
+    {
+      "id": "bobNonceDED",
+      "display": "IF (nb) : KNOWN_NONCES THEN\"block\" ELSE \"none\" END"
     }
   ],
   "events": [
@@ -515,6 +567,31 @@
       "id": "aliceSndMsg1Btn_ToSpy",
       "event": "Send_Message1",
       "predicates": ["sender=alice & receiver=spy & msg=(idA|->na|->pkS)"]
+    },
+    {
+      "id": "deduce1",
+      "event": "Deduce1"
+    },
+    {
+      "id": "deduce2",
+      "event": "Deduce2"
+    },
+    {
+      "id": "deduce3",
+      "event": "Deduce3"
+    },
+    {
+      "id": "construct1",
+      "event": "Construct1"
+    },
+    {
+      "id": "construct2",
+      "event": "Construct2"
+    },
+    {
+      "id": "construct3",
+      "event": "Construct3",
+      "predicates": ["nonce_local=nb & public_key_local=pkB"]
     }
   ]
 }

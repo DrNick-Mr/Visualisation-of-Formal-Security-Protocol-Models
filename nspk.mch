@@ -118,7 +118,6 @@ OPERATIONS
     counter(receiver) := 1 ||
     role(receiver) := resp ||
     belief(receiver) := identity(sender)
-
     END;
 
     Recv_Message2(sender,receiver,msg) =
@@ -149,7 +148,7 @@ OPERATIONS
     END;
 
     //Decrypt message 1 when private_key is known by spy
-    deduction1(id_local, nonce_local, public_key_local) = 
+    Deduce1(id_local, nonce_local, public_key_local) = 
     PRE
     id_local: IDENTITIES &
     nonce_local: NONCES &
@@ -162,40 +161,37 @@ OPERATIONS
     END;
 
     //Decrypt message 2 when private_key is known by spy
-    deduction2(nonce_local, nonce_local2, public_key_local) =
+    Deduce2(nonce_local, nonce_local2, public_key_local) =
     PRE
     nonce_local: NONCES &
     nonce_local2: NONCES &
     public_key_local: PUBLIC_KEYS &
     (nonce_local, nonce_local2, public_key_local) : KNOWN_MESSAGE2
     THEN
-    skip ||
     IF key_pair(public_key_local): KNOWN_PRIVATE_KEYS THEN
         KNOWN_NONCES := KNOWN_NONCES \/ {nonce_local2}
     END
     END;
 
     //Decrypt message 3 when private_key is known by spy
-    deduction3(nonce_local, public_key_local) =
+    Deduce3(nonce_local, public_key_local) =
     PRE
     nonce_local: NONCES &
     public_key_local: PUBLIC_KEYS &
     (nonce_local, public_key_local) : KNOWN_MESSAGE3
     THEN
-    skip ||
     IF key_pair(public_key_local): KNOWN_PRIVATE_KEYS THEN
         KNOWN_NONCES := KNOWN_NONCES \/ {nonce_local}
     END
     END;
 
     //Construct message1 from known nonces by spy
-    deduction4(id_local, nonce_local, public_key_local) = 
+    Construct1(id_local, nonce_local, public_key_local) = 
     PRE
     id_local: KNOWN_IDENTITIES &
     nonce_local: KNOWN_NONCES &
     public_key_local: KNOWN_PUBLIC_KEYS &
     (id_local, nonce_local, public_key_local) /: KNOWN_MESSAGE1
-
     THEN
     KNOWN_MESSAGE1 := KNOWN_MESSAGE1 \/ {(id_local, nonce_local, public_key_local)} ||
     IF key_pair(public_key_local) : KNOWN_PRIVATE_KEYS  THEN
@@ -204,7 +200,7 @@ OPERATIONS
     END;
 
     //Construct message1 from known nonces by spy
-    deduction5(nonce_local, nonce_local2, public_key_local) = 
+    Construct2(nonce_local, nonce_local2, public_key_local) = 
     PRE
     nonce_local: KNOWN_NONCES &
     nonce_local2: KNOWN_NONCES &
@@ -219,7 +215,7 @@ OPERATIONS
     END
     END;
 
-    deduction6(nonce_local, public_key_local) = 
+    Construct3(nonce_local, public_key_local) = 
     PRE
     nonce_local: KNOWN_NONCES &
     public_key_local: KNOWN_PUBLIC_KEYS &

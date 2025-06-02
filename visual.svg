@@ -216,10 +216,10 @@
 <!--Spy Behaviour-->
 <text id="SpyBehaviourTxt" x="100" y="1250" font-size="30" >SPY: </text>
 <rect id="spySndMsg1Btn_ToBob" x="100" y="1260" width="300" height="80" fill="gray"/>
-<text id="spySndMsg1Txt_ToBob" x="120" y="1300" font-size="30" >fake Msg1 to Bob</text>
+<text id="spySndMsg1Txt_ToBob" x="120" y="1300" font-size="30" >send Msg1 to Bob</text>
 
 <rect id="spySndMsg3Btn_ToBob" x="100" y="1260" width="300" height="80" fill="gray"/>
-<text id="spySndMsg3Txt_ToBob" x="120" y="1300" font-size="30" >fake Msg3 to Bob</text>
+<text id="spySndMsg3Txt_ToBob" x="120" y="1300" font-size="30" >send Msg3 to Bob</text>
 
 <!-- Msg1 Snd -->
 <polygon id="spyPkMsg1" points="370,320 400,380 340,380" fill="green" display="none" />
@@ -249,13 +249,6 @@
 <circle id="aliceNonceMsg1DED" cx="1270" cy="370" r="25" fill="red" display="none" />
 <rect id="aliceIDMsg1DED" x="1300" y="340" width="60" height="60" fill="red"  display="none" />
 
-<rect id="boxMsg1DED" x="1240" y="330" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
-<polygon id="bobPKmsg1DED" points="1370,380 1400,440 1340,440" fill="blue" display="none" />
-<circle id="aliceNonceMsg1DED" cx="1270" cy="370" r="25" fill="red" display="none" />
-<rect id="aliceIDMsg1DED" x="1300" y="340" width="60" height="60" fill="red"  display="none" />
-
-
-
 <!--Messages 2-->
 <rect id="boxMsg2DED" x="1500" y="330" width="130" height="80" fill="none" stroke="black" stroke-width="2" display="none"/>
 <polygon id="alicePKmsg2DED" points="1630,380 1670,440 1590,440" fill="red" display="none" />
@@ -274,13 +267,13 @@
 
 <!-- Spy Buttons-->
 <rect id="construct1" x="1250" y="1350" width="160" height="60" fill="gray" display="block"/>
-<text id="constrct1Txt" x="1260" y="1380" font-size="25" display="block" > construct! 1</text>
+<text id="construct1Txt" x="1260" y="1380" font-size="25" display="block" > construct! 1</text>
 
 <rect id="construct2" x="1500" y="1350" width="160" height="60" fill="gray" display="block"/>
-<text id="constrct2Txt" x="1510" y="1380" font-size="25" display="block" > constuct! 2</text>
+<text id="construct2Txt" x="1510" y="1380" font-size="25" display="block" > construct! 2</text>
 
 <rect id="construct3" x="1750" y="1350" width="160" height="60" fill="gray" display="block"/>
-<text id="constrct3Txt" x="1760" y="1380" font-size="25" display="block" > constuct! 3</text>
+<text id="construct3Txt" x="1760" y="1380" font-size="25" display="block" > construct! 3</text>
 
 <rect id="deduce1" x="2000" y="350" width="160" height="60" fill="gray" display="block"/>
 <text id="deduce1Txt" x="2010" y="390" font-size="25" display="block" > deduce! 1</text>
