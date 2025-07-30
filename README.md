@@ -60,7 +60,7 @@ Designed as part of a formal software engineering project, this tool aims to **b
 
 ### 🌐 Running the UI
 
-1. Open `index.html` in prob2-ui
+1. Open `svg.json` in prob2-ui
 2. Trigger events via the model (or UI buttons if enabled)
 3. Visual elements (e.g., messages, keys) will appear or change based on the current protocol state, controlled via `display.json`
 
